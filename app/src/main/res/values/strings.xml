@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">奇妙的音乐</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_ame">登录</string>
+    <string name="home_name">主页</string>
+
+    <string name="login_phone">登录</string>
+    <string name="login_registration">注册</string>
+    <string name="login_phone_country_code_text">+ 86</string>
+    <string name="login_email_verification_code_text_hint">输入验证码</string>
+    <string name="login_phone_edit_text_hint">输入手机号</string>
+    <string name="login_password_edit_text_hint">输入密码</string>
+    <string name="login_name_edit_text_hint">输入昵称</string>
+    <string name="login_send_verification_code_text">发送验证码</string>
+    <string name="login_text">登录</string>
 </resources>

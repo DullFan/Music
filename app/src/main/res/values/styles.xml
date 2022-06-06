@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="login_rounded_shape">
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerSizeBottomLeft">15dp</item>
+        <item name="cornerSizeBottomRight">15dp</item>
+    </style>
+
+
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <!--选中的颜色-->
+        <item name="colorControlNormal">@color/grey_login</item>
+        <!--未选中的颜色-->
+        <item name="colorControlActivated">@color/blue</item>
+    </style>
+</resources>

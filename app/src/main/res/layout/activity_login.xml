@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.myapplication.viewmodel.LoginViewModel" />
+
+        <variable
+            name="utilsViewModel"
+            type="com.example.myapplication.viewmodel.UtilsViewModel" />
+
+        <variable
+            name="editText"
+            type="android.widget.EditText" />
+
+        <variable
+            name="textView"
+            type="android.widget.TextView" />
+    </data>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_login"
+        app:layoutDescription="@xml/activity_login_xml_constraintlayout_scene">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_guideline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_guideline2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_guideline3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <View
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/grey_login"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/login_padding_bar"/>
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/login_error"
+            android:layout_width="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="15dp"
+            android:onClick="@{()-> utilsViewModel.onClickFinish()}"
+            android:src="@drawable/error"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_padding_bar" />
+
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/login_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:background="@color/grey_login"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_error" />
+
+
+        <TextView
+            android:id="@+id/login_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_login"
+            android:gravity="center"
+            android:padding="@dimen/padding_15dp"
+            android:text="@string/login_phone"
+            android:textColor="@color/grey_text"
+            android:textSize="@dimen/text_size_16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/login_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/login_logo" />
+
+        <TextView
+            android:id="@+id/login_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_login"
+            android:gravity="center"
+            android:padding="@dimen/padding_15dp"
+            android:text="@string/login_registration"
+            android:textColor="@color/grey_text"
+            android:textSize="@dimen/text_size_16dp"
+            app:layout_constraintLeft_toRightOf="@id/login_guideline"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_logo" />
+
+
+        <TextView
+            android:id="@+id/login_phone_select"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/top_right_rounded_15dp"
+            android:gravity="center"
+            android:padding="@dimen/padding_15dp"
+            android:text="@string/login_phone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16dp"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/login_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/login_logo" />
+
+        <TextView
+            android:id="@+id/login_email_select"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/top_left_rounded_15dp"
+            android:gravity="center"
+            android:padding="@dimen/padding_15dp"
+            android:text="@string/login_registration"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16dp"
+            android:visibility="visible"
+            app:layout_constraintLeft_toRightOf="@id/login_guideline"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_logo" />
+
+        <View
+            android:id="@+id/login_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_email" />
+
+        <TextView
+            android:id="@+id/login_phone_country_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_phone_country_code_text"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/login_phone_edit_text"
+            app:layout_constraintLeft_toLeftOf="@+id/login_guideline2"
+            app:layout_constraintTop_toTopOf="@id/login_phone_edit_text" />
+
+
+        <ImageView
+            android:id="@+id/login_image_drop_down"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/img_drop_down"
+            app:layout_constraintBottom_toBottomOf="@+id/login_phone_country_code"
+            app:layout_constraintLeft_toRightOf="@id/login_phone_country_code"
+            app:layout_constraintTop_toTopOf="@id/login_phone_country_code" />
+
+        <EditText
+            android:id="@+id/login_phone_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onTextChanged="@{(s, start, before, count)-> viewModel.isButtonEnabled(editText,s,0)}"
+            android:background="@color/white"
+            android:hint="@string/login_phone_edit_text_hint"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:text="@={viewModel.phoneEdit}"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toRightOf="@+id/login_image_drop_down"
+            app:layout_constraintRight_toRightOf="@+id/login_guideline3"
+            app:layout_constraintTop_toTopOf="@id/login_view" />
+
+        <View
+            android:id="@+id/login_dividing_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/black_alpha_a2"
+            app:layout_constraintLeft_toLeftOf="@id/login_guideline2"
+            app:layout_constraintRight_toRightOf="@+id/login_guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/login_phone_edit_text" />
+
+
+        <EditText
+            android:onTextChanged="@{(s, start, before, count)-> viewModel.isButtonEnabled(editText,s,1)}"
+            android:id="@+id/login_email_verification_code_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:hint="@string/login_email_verification_code_text_hint"
+            android:inputType="number"
+            android:maxLength="10"
+            android:padding="10dp"
+            android:text="@={viewModel.verificationCodeEdit}"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toRightOf="@+id/login_guideline2"
+            app:layout_constraintRight_toLeftOf="@+id/login_send_verification_code"
+            app:layout_constraintTop_toBottomOf="@id/login_dividing_line" />
+
+        <View
+            android:id="@+id/login_dividing_line2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/black_alpha_a2"
+            app:layout_constraintLeft_toLeftOf="@id/login_guideline2"
+            app:layout_constraintRight_toRightOf="@+id/login_guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/login_email_verification_code_text" />
+
+        <EditText
+            android:onTextChanged="@{(s, start, before, count)-> viewModel.isButtonEnabled(editText,s,2)}"
+            android:id="@+id/login_password_verification_code_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:hint="@string/login_password_edit_text_hint"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:text="@={viewModel.passwordEdit}"
+            android:textSize="14dp"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toRightOf="@+id/login_guideline2"
+            app:layout_constraintRight_toLeftOf="@+id/login_guideline3"
+            app:layout_constraintTop_toBottomOf="@id/login_dividing_line2" />
+
+        <View
+            android:id="@+id/login_dividing_line3"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/black_alpha_a2"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/login_guideline2"
+            app:layout_constraintRight_toRightOf="@+id/login_guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/login_password_verification_code_text" />
+
+        <EditText
+            android:onTextChanged="@{(s, start, before, count)-> viewModel.isButtonEnabled(editText,s,3)}"
+            android:id="@+id/login_username_verification_code_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:hint="@string/login_name_edit_text_hint"
+            android:inputType="text"
+            android:padding="10dp"
+            android:text="@={viewModel.usernameEdit}"
+            android:textSize="14dp"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toRightOf="@+id/login_guideline2"
+            app:layout_constraintRight_toLeftOf="@+id/login_guideline3"
+            app:layout_constraintTop_toBottomOf="@id/login_dividing_line3" />
+
+        <View
+            android:id="@+id/login_dividing_line4"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/black_alpha_a2"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/login_guideline2"
+            app:layout_constraintRight_toRightOf="@+id/login_guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/login_username_verification_code_text" />
+
+
+        <TextView
+            android:id="@+id/login_send_verification_code"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:background="@{viewModel.sendCodeIsEnabled ? @drawable/login_rounded_10dp_color_9a :@drawable/login_rounded_10dp_color_2a}"
+            android:textColor="@{viewModel.sendCodeIsEnabled ? @color/white :@color/grey_text_default}"
+            android:enabled="@{viewModel.sendCodeIsEnabled}"
+            android:onClickListener="@{(v)-> viewModel.startCountDown(context)}"
+            android:paddingHorizontal="10dp"
+            android:text="@={viewModel.countdown}"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/login_email_verification_code_text"
+            app:layout_constraintRight_toLeftOf="@id/login_guideline3"
+            app:layout_constraintTop_toTopOf="@id/login_email_verification_code_text"
+            app:shapeAppearanceOverlay="@style/login_rounded_shape" />
+
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@{viewModel.buttonIsEnabled ? @drawable/login_rounded_10dp :@drawable/login_rounded_10dp_color_2a}"
+            android:textColor="@{viewModel.buttonIsEnabled ? @color/white :@color/grey_text_default}"
+            android:enabled="@{viewModel.buttonIsEnabled}"
+            android:onClickListener="@{()-> viewModel.loginButton(context,editText)}"
+            android:text="@string/login_text"
+            app:layout_constraintLeft_toLeftOf="@+id/login_guideline2"
+            app:layout_constraintRight_toRightOf="@+id/login_guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/login_dividing_line2" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/login_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@={viewModel.checkBoxIsChecked}"
+            android:theme="@style/MyCheckBox"
+            app:layout_constraintBottom_toBottomOf="@+id/login_privacy_policy"
+            app:layout_constraintRight_toLeftOf="@+id/login_privacy_policy"
+            app:layout_constraintTop_toTopOf="@+id/login_privacy_policy" />
+
+        <TextView
+            android:id="@+id/login_privacy_policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="13dp"
+            android:text="@{viewModel.getUserAgreement(textView,context)}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_button" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>
