@@ -17,6 +17,9 @@
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/main_item1_selected.xml" value="0.125" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/main_item2_selected.xml" value="0.125" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/main_item3_selected.xml" value="0.125" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/music_rv_item_round.xml" value="0.151" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/music_rv_item_time.xml" value="0.151" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/music_rv_item_time2.xml" value="0.151" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/top_left_rounded_15dp.xml" value="0.24739583333333334" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/top_right_rounded_10dp.xml" value="0.24739583333333334" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/top_right_rounded_15dp.xml" value="0.24739583333333334" />
@@ -33,7 +36,7 @@
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_my.xml" value="0.213768115942029" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/item_dialog_bottom_item1.xml" value="0.24048913043478262" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/item_dialog_bottom_item2.xml" value="0.1856508875739645" />
-        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/music_rv_item.xml" value="0.25" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/music_rv_item.xml" value="0.32947232947232946" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/status_bar_height_layout.xml" value="0.23125" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/menu/bottom_main_menu.xml" value="0.2111111111111111" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/menu/menu_bottom_main_menu.xml" value="0.24947916666666667" />

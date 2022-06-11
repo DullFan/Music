@@ -84,8 +84,8 @@ interface NetEaseCloudApi {
     ):SongMusicBean
 
     /**
-     * 音乐是否可用
+     * 获取歌词
      */
-    @GET("/check/music")
-    suspend fun checkMusic()
+    @GET("/lyric")
+    suspend fun lyricRequest(@Query("id")id:Int):LyricBean
 }

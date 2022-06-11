@@ -54,6 +54,12 @@ class ApiRepository {
         return getApiClient().songUrlRequest(id)
     }
 
+    suspend fun lyricRequest(
+        id: Int
+    ) : LyricBean {
+        return getApiClient().lyricRequest(id)
+    }
+
     fun getApiClient(): NetEaseCloudApi {
         return APiClient.instance.instanceRetrofit(NetEaseCloudApi::class.java)
     }

@@ -63,4 +63,6 @@ dependencies {
     //网络
     implementation 'com.squareup.okhttp3:okhttp:4.7.2'
     implementation 'com.tencent:mmkv:1.0.23'
+
+    implementation 'com.github.Moriafly:LyricViewX:1.2.0'
 }

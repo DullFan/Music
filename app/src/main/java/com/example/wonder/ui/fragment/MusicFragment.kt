@@ -1,9 +1,12 @@
 package com.example.wonder.ui.fragment
 
+import android.opengl.Visibility
 import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.SeekBar
@@ -12,6 +15,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.dirror.lyricviewx.LyricUtil.formatTime
+import com.dirror.lyricviewx.LyricViewX
+import com.dirror.lyricviewx.OnPlayClickListener
 import com.example.wonder.R
 import com.example.wonder.R.id.design_bottom_sheet
 import com.example.wonder.base.BaseFragment
@@ -46,6 +52,20 @@ class MusicFragment : BaseFragment() {
      */
     lateinit var mBinder: MediaService.MyBinder
 
+    /**
+     * 歌词控件
+     */
+    lateinit var musicAlbumLyric: LyricViewX
+
+    /**
+     * 防止第一次进入ViewPager2选中时回调
+     */
+    var viewPager2Flag = false
+
+    /**
+     * 当前Item的DataBinding
+     */
+    lateinit var itemDataBinding: MusicRvItemBinding
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -295,6 +315,7 @@ class MusicFragment : BaseFragment() {
 
                     //当前选中判断
                     if (index == position) {
+                        itemDataBinding = rvDataBinding
                         LiveDataBus.with(
                             LiveDataBusKey.MUSIC_LIST_POSITION,
                             Int::class.java
@@ -311,70 +332,132 @@ class MusicFragment : BaseFragment() {
                         musicSeekBar = rvDataBinding.musicSeekBar
                         initSeekBarListener()
                         initBottomDialog(rvDataBinding.homeMore)
+                        musicAlbumLyric = rvDataBinding.musicAlbumLyric
+
+                        //获取歌词
+                        viewModel.lyricRequest(data.id, requireContext())
                     }
-                }
-
-                private fun initSeekBarListener() {
-                    //设置进度条
-                    LiveDataBus.with(LiveDataBusKey.PLAYPROGRESS, Int::class.java)
-                        .observe(viewLifecycleOwner) {
-                            "${it}".showLog()
-
-                            if (::musicSeekBar.isInitialized) {
-                                musicSeekBar.progress = it
-                            }
-                        }
-
-                    LiveDataBus.with(LiveDataBusKey.MAX_PROGRESS, Int::class.java)
-                        .observe(viewLifecycleOwner) {
-                            if (::musicSeekBar.isInitialized) {
-                                musicSeekBar.max = it
-                            } else {
-                                LiveDataBus.with(
-                                    LiveDataBusKey.MAX_PROGRESS,
-                                    Int::class.java
-                                ).value = it
-                            }
-                        }
-
-                    musicSeekBar.setOnSeekBarChangeListener(object :
-                        SeekBar.OnSeekBarChangeListener {
-                        override fun onProgressChanged(
-                            seekBar: SeekBar?,
-                            progress: Int,
-                            fromUser: Boolean
-                        ) {
-
-                        }
-
-                        override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                            LiveDataBus.with(
-                                LiveDataBusKey.MUSIC_SEEK_BAR,
-                                Boolean::class.java
-                            ).value = false
-
-                        }
-
-                        override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                            mBinder.seekToPosition(seekBar!!.progress)
-                            LiveDataBus.with(
-                                LiveDataBusKey.MUSIC_SEEK_BAR,
-                                Boolean::class.java
-                            ).value = true
-                        }
-                    })
                 }
             }
 
         viewBinding.musicVp2.adapter = adapter
+    }
 
+    private fun initSeekBarListener() {
+        //设置进度条
+        LiveDataBus.with(LiveDataBusKey.PLAYPROGRESS, Int::class.java)
+            .observe(viewLifecycleOwner) {
+                if (::musicSeekBar.isInitialized) {
+                    musicSeekBar.progress = it
+                }
+                if (::musicAlbumLyric.isInitialized) {
+                    musicAlbumLyric.updateTime(it.toLong())
+                }
+            }
 
+        LiveDataBus.with(LiveDataBusKey.MAX_PROGRESS, Int::class.java)
+            .observe(viewLifecycleOwner) {
+                if (::musicSeekBar.isInitialized) {
+                    musicSeekBar.max = it
+                    if (::itemDataBinding.isInitialized) {
+                        itemDataBinding.musicRvItemRight.text = formatTime(it.toLong())
+                    }
+                } else {
+                    LiveDataBus.with(
+                        LiveDataBusKey.MAX_PROGRESS,
+                        Int::class.java
+                    ).value = it
+                }
+            }
+
+        musicSeekBar.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            var uponNumber:Int = 0
+            override fun onProgressChanged(
+                seekBar: SeekBar?,
+                progress: Int,
+                fromUser: Boolean
+            ) {
+                uponNumber = progress
+                // TODO 判断前后滑动
+                //只在滑动时监听
+                if(LiveDataBus.with(
+                        LiveDataBusKey.MUSIC_SEEK_BAR,
+                        Boolean::class.java
+                    ).value == false
+                ){
+                    itemDataBinding.musicRvItemLeft.text = formatTime(progress.toLong())
+                    itemDataBinding.musicAlbumLyricTime.updateTime(progress.toLong())
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                LiveDataBus.with(
+                    LiveDataBusKey.MUSIC_SEEK_BAR,
+                    Boolean::class.java
+                ).value = false
+
+                if (::itemDataBinding.isInitialized) {
+                    startAnimView(itemDataBinding.homeLike, true)
+                    startAnimView(itemDataBinding.musicAlbumLyric, true)
+                    startAnimView(itemDataBinding.homeShare, true)
+                    startAnimView(itemDataBinding.homeDownload, true)
+                    startAnimView(itemDataBinding.homeMore, true)
+                    startAnimView(itemDataBinding.musicSongTitle, true)
+                    startAnimView(itemDataBinding.musicSinger, true)
+
+                    startAnimView(itemDataBinding.musicAlbumLyricTime, false)
+                    startAnimView(itemDataBinding.musicRvItemTimeLayout, false)
+                }
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                mBinder.seekToPosition(seekBar!!.progress)
+                LiveDataBus.with(
+                    LiveDataBusKey.MUSIC_SEEK_BAR,
+                    Boolean::class.java
+                ).value = true
+
+                startAnimView(itemDataBinding.homeLike, false)
+                startAnimView(itemDataBinding.musicAlbumLyric, false)
+                startAnimView(itemDataBinding.homeShare, false)
+                startAnimView(itemDataBinding.homeDownload, false)
+                startAnimView(itemDataBinding.homeMore, false)
+                startAnimView(itemDataBinding.musicSongTitle, false)
+                startAnimView(itemDataBinding.musicSinger, false)
+                startAnimView(itemDataBinding.musicAlbumLyricTime, true)
+                startAnimView(itemDataBinding.musicRvItemTimeLayout, true)
+
+                mBinder.playMusic()
+            }
+        })
     }
 
     /**
-     * 设置监听器
+     * 监听一首歌是否播放完成
      */
     private fun initListener() {
+        viewModel.lyricLiveData.observe(viewLifecycleOwner) {
+            musicAlbumLyric.apply {
+                loadLyric(it.lrc.lyric)
+
+                setNormalTextSize(50f)
+                setNormalColor(resources.getColor(R.color.white_8a))
+                setCurrentTextSize(70f)
+                setLabel("暂无歌词")
+                visibility = View.VISIBLE
+            }
+
+            if (::itemDataBinding.isInitialized) {
+                itemDataBinding.musicAlbumLyricTime.apply {
+                    loadLyric(it.lrc.lyric)
+                    setCurrentTextSize(45f)
+                    setCurrentColor(resources.getColor(R.color.white_8a))
+                    setLabel("暂无歌词")
+                }
+            }
+        }
+
         viewModel.songMusicLiveData.observe(viewLifecycleOwner) {
             LiveDataBus.with(MUSIC_URL, String::class.java).value = it.data[0].url
             mBinder.designatedMusic(it.data[0].url)
@@ -394,7 +477,7 @@ class MusicFragment : BaseFragment() {
                         Int::class.java
                     ).value
 
-                    when(playModel){
+                    when (playModel) {
                         0 -> {
                             position = if (mutableList.size - 1 == position) {
                                 0
@@ -414,10 +497,10 @@ class MusicFragment : BaseFragment() {
                         2 -> {
                             val size =
                                 LiveDataBus.with(MUSIC_LIST, ArrayList::class.java).value!!.size
-                            var first:Int = 0
+                            var first: Int = 0
                             first = (0..size).shuffled().first()
                             //确保不和上次播放的音乐一样
-                            while (first == position){
+                            while (first == position) {
                                 first = (0..size).shuffled().first()
                             }
                             viewBinding.musicVp2.currentItem = first
@@ -431,8 +514,29 @@ class MusicFragment : BaseFragment() {
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                adapter.index = position
+                if (viewPager2Flag) {
+                    adapter.index = position
+                } else {
+                    viewPager2Flag = true
+                }
             }
         })
+    }
+
+    /**
+     * 开启动画，true为退出，false为进入
+     */
+    fun startAnimView(view: View, animFlag: Boolean) {
+        val animation: Animation = if (animFlag) {
+            AnimationUtils.loadAnimation(requireContext(), R.anim.item_rv_item_out_anim)
+        } else {
+            AnimationUtils.loadAnimation(requireContext(), R.anim.item_rv_item_in_anim)
+        }
+        view.startAnimation(animation)
+        if (animFlag) {
+            view.visibility = View.GONE
+        } else {
+            view.visibility = View.VISIBLE
+        }
     }
 }

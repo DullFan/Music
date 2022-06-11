@@ -5,11 +5,9 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.wonder.bean.LikeMusicListBean
-import com.example.wonder.bean.MusicListBean
-import com.example.wonder.bean.SongDetailsBean
-import com.example.wonder.bean.SongMusicBean
+import com.example.wonder.bean.*
 import com.example.wonder.repository.ApiRepository
+import com.example.wonder.utils.isNet
 import com.example.wonder.utils.isNetCookie
 import kotlinx.coroutines.launch
 
@@ -19,6 +17,7 @@ class MainViewModel : ViewModel() {
     var likeMusicListLiveData = MutableLiveData<LikeMusicListBean>()
     var songDetailsLiveData = MutableLiveData<SongDetailsBean>()
     var songMusicLiveData = MutableLiveData<SongMusicBean>()
+    var lyricLiveData = MutableLiveData<LyricBean>()
 
     fun likeMusicListRequest(uId: Int, context: Context) {
         isNetCookie(context) {
@@ -50,6 +49,18 @@ class MainViewModel : ViewModel() {
             viewModelScope.launch {
                 try {
                     songMusicLiveData.value = ApiRepository().songUrlRequest(id)
+                } catch (e: Exception) {
+
+                }
+            }
+        }
+    }
+
+    fun lyricRequest(id: Int, context: Context) {
+        isNet(context) {
+            viewModelScope.launch {
+                try {
+                    lyricLiveData.value = ApiRepository().lyricRequest(id)
                 } catch (e: Exception) {
 
                 }
