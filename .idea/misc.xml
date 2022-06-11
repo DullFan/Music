@@ -6,20 +6,37 @@
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.25384615384615383" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable-v24/login_rounded_10dp_color_2a.xml" value="0.25" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable-v24/login_rounded_10dp_color_5a.xml" value="0.25" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.172" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/ic_baseline_more_horiz_24.xml" value="0.172" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/ic_launcher_background.xml" value="0.172" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/login_right_top_rounded.xml" value="0.24739583333333334" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/login_rounded_10dp.xml" value="0.5479166666666667" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/login_rounded_10dp_color_5a.xml" value="0.25384615384615383" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/login_rounded_15dp.xml" value="0.4787037037037037" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/main_bottom_drawable.xml" value="0.1415" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/main_item1_selected.xml" value="0.125" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/main_item2_selected.xml" value="0.125" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/main_item3_selected.xml" value="0.125" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/top_left_rounded_15dp.xml" value="0.24739583333333334" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/top_right_rounded_10dp.xml" value="0.24739583333333334" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/top_right_rounded_15dp.xml" value="0.24739583333333334" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/activity_main.xml" value="0.23125" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/activity_test_fragment.xml" value="0.24166666666666667" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/dialog_bottom_music_list.xml" value="0.12132725430597771" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/dialog_music_list_bottom.xml" value="0.24048913043478262" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_blank.xml" value="0.24166666666666667" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_community.xml" value="0.213768115942029" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_home.xml" value="0.24166666666666667" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_music.xml" value="0.12121212121212122" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_my.xml" value="0.213768115942029" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/item_dialog_bottom_item1.xml" value="0.24048913043478262" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/item_dialog_bottom_item2.xml" value="0.1856508875739645" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/music_rv_item.xml" value="0.25" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/status_bar_height_layout.xml" value="0.23125" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/menu/bottom_main_menu.xml" value="0.2111111111111111" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/menu/menu_bottom_main_menu.xml" value="0.24947916666666667" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24739583333333334" />
       </map>
     </option>

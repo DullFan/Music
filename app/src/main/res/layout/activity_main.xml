@@ -5,15 +5,126 @@
 
     <data>
 
+
+        <variable
+            name="picUrl"
+            type="String" />
+
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".ui.activity.MainActivity">
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/main_view_pager2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
 
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/main_bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:id="@+id/main_item1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/main_item_img1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/bottom_main_menu_item1"
+                    app:lottie_rawRes="@raw/lottie_home" />
+
+                <TextView
+                    android:id="@+id/main_item_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bottom_menu_item2_string"
+                    android:textColor="@color/grey_text_default" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15dp"
+                android:orientation="vertical">
+
+
+                <com.example.wonder.ui.view.RoundProgress
+                    android:id="@+id/main_music_round_progress"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:roundColor = "@color/white"
+                    app:roundProgressColor="@color/purple_500"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/main_music_img"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/logo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:roundPercent="1" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/main_music_play"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/lock_screen_play"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:roundPercent="1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/main_item2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/main_item_img2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/bottom_main_menu_item3"/>
+
+                <TextView
+                    android:id="@+id/main_item_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bottom_menu_item3_string"
+                    android:textColor="@color/grey_text_default" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

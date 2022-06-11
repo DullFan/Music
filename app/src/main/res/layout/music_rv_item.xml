@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.wonder.bean.MusicListBean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/black"
+        android:layout_height="match_parent">
+
+        <ImageView
+            app:glideBlueImage="@{data.picUrl}"
+            android:scaleType="centerCrop"
+            android:id="@+id/music_album_blur_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:scaleType="centerCrop"
+            app:glideImage="@{data.picUrl}"
+            android:id="@+id/music_album_img"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/home_menu"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="59dp"
+            android:src="@drawable/ic_baseline_menu_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_search"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="59dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_baseline_search_24"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/music_list_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="推荐"
+            android:textColor="@color/white_8a"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/home_menu"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/home_menu" />
+
+
+        <ImageView
+            android:id="@+id/home_like"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/music_like"
+            app:layout_constraintBottom_toTopOf="@+id/music_seek_bar"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_share"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/music_share"
+            app:layout_constraintBottom_toTopOf="@+id/music_seek_bar"
+            app:layout_constraintLeft_toRightOf="@id/home_like" />
+
+        <ImageView
+            android:id="@+id/home_more"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_baseline_more_horiz_24"
+            app:layout_constraintBottom_toTopOf="@+id/music_seek_bar"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/home_download"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/music_download"
+            app:layout_constraintBottom_toTopOf="@+id/music_seek_bar"
+            app:layout_constraintRight_toLeftOf="@id/home_more" />
+
+        <SeekBar
+            android:id="@+id/music_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="75dp"
+            android:progressBackgroundTint="@color/white_8a"
+            android:thumbTint="@color/white"
+            android:progressTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.example.wonder.ui.view.MyTextView
+            android:id="@+id/music_song_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="@{data.songTitle}"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/music_singer"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/music_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="30dp"
+            android:text="@={data.singer}"
+            android:textColor="@color/white_8a"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/home_like"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

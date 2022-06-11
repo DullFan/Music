@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.wonder.bean.MusicListBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                glideImage="@{data.picUrl}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:round="5dp" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/item_bottom_dialog_lottie"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/lottie_music_play" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={data.songTitle}"
+                android:textColor="@color/white_8a"
+                android:textSize="16dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={data.singer}"
+                android:textColor="@color/white_5a"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_bottom_dialog_del"
+            android:layout_width="30dp"
+            android:padding="8dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/error"
+            app:tint="@color/white_8a" />
+
+    </LinearLayout>
+</layout>

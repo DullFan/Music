@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">奇妙的音乐</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_ame">登录</string>
     <string name="home_name">主页</string>
@@ -14,4 +13,10 @@
     <string name="login_name_edit_text_hint">输入昵称</string>
     <string name="login_send_verification_code_text">发送验证码</string>
     <string name="login_text">登录</string>
+    <string name="bottom_menu_item1_string">音乐</string>
+    <string name="bottom_menu_item2_string">发现</string>
+    <string name="bottom_menu_item3_string">我的</string>
+    <string name="dialog_bottom_text1">当前播放</string>
+    <string name="dialog_bottom_text2">播放自</string>
+
 </resources>
