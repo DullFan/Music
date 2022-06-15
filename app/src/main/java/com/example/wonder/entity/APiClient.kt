@@ -68,7 +68,18 @@ class LoggingInterceptor : Interceptor {
         //TODO 获取网络请求信息
 //        format.showLog()
 
-        if (format.contains("503") || format.contains("505")) {
+        if(request.url.toString().contains("recommend/songs?cookie")){
+            format.showLog()
+        }
+
+        if ((format.contains("503") || format.contains("505")) && !request.url.toString()
+                .contains("banner?type")
+            && !request.url.toString().contains("personalized?limit")
+            && !request.url.toString().contains("recommend/resource?cookie")
+            && !request.url.toString().contains("recommend/songs?cookie")
+            && !request.url.toString().contains("playlist/detail")
+            && !request.url.toString().contains("playlist/track/all")
+        ) {
             val startIndex = format.indexOf("【") + 1
             val endIndex = format.indexOf("】")
             PassingOnData.errorBean =

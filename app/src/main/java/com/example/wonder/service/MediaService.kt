@@ -59,14 +59,23 @@ class MediaService : Service() {
         @Synchronized
         fun designatedMusic(url: String) {
             Handler(Looper.myLooper()!!).post {
-                mMediaPlayer.reset();
-                mMediaPlayer.setDataSource(url);
-                mMediaPlayer.prepare();
-                if (!oneInFlag) {
-                    mMediaPlayer.start();
-                    LiveDataBus.with(MUSIC_IS_FLAG, Boolean::class.java).value = true
-                } else {
-                    LiveDataBus.with(MUSIC_IS_FLAG, Boolean::class.java).value = false
+                try {
+                    mMediaPlayer.reset()
+                    mMediaPlayer.setDataSource(url)
+                    mMediaPlayer.prepare()
+                    if (!oneInFlag) {
+                        mMediaPlayer.start();
+                        LiveDataBus.with(MUSIC_IS_FLAG, Boolean::class.java).value = true
+                    } else {
+                        LiveDataBus.with(MUSIC_IS_FLAG, Boolean::class.java).value = false
+                    }
+                } catch (e: Exception) {
+                    Handler(Looper.myLooper()!!).post {
+                        mMediaPlayer.reset()
+                        mMediaPlayer.setDataSource(url)
+                        mMediaPlayer.prepare()
+                        mMediaPlayer.start();
+                    }
                 }
             }
         }

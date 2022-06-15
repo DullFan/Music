@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,9 +9,14 @@
             name="data"
             type="com.example.wonder.bean.MusicListBean" />
 
+        <variable
+            name="visFlag"
+            type="Boolean" />
+
     </data>
 
     <LinearLayout
+        android:id="@+id/item_rv_play_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -19,8 +25,8 @@
         android:paddingVertical="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp">
+            android:layout_width="60dp"
+            android:layout_height="60dp">
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 glideImage="@{data.picUrl}"
@@ -37,49 +43,54 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
+                isVisibility="@{visFlag}"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/lottie_music_play" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_weight="1"
+            android:layout_weight="9"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:text="@={data.songTitle}"
-                android:textColor="@color/white_8a"
+                android:textColor="@color/black"
                 android:textSize="16dp" />
-
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:gravity="center"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
+                    isVisibility="@{data.fee == 0 || data.fee == 8}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="VIP"
-                    android:paddingHorizontal="5dp"
-                    isVisibility="@{data.fee == 0 || data.fee == 8}"
-                    android:background="@drawable/vip_back"
                     android:layout_marginRight="5dp"
+                    android:background="@drawable/vip_back"
+                    android:paddingHorizontal="5dp"
+                    android:text="VIP"
                     android:textColor="@color/purple_700"
                     android:textSize="8dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
                     android:text="@={data.singer}"
-                    android:textColor="@color/white_5a"
+                    android:textColor="@color/black_alpha_8a"
                     android:textSize="13dp" />
 
             </LinearLayout>
@@ -87,12 +98,13 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/item_bottom_dialog_del"
-            android:layout_width="30dp"
-            android:padding="8dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/error"
-            app:tint="@color/white_8a" />
+            android:id="@+id/item_rv_play_list_more"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_more_horiz_24"
+            android:tint="@color/black_alpha_8a"
+            tools:ignore="UseAppTint" />
 
     </LinearLayout>
 </layout>

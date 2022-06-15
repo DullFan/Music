@@ -3,19 +3,15 @@ package com.example.wonder.utils
 import android.app.ActivityManager
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Matrix
 import android.net.ConnectivityManager
-import android.renderscript.Allocation
-import android.renderscript.Element
-import android.renderscript.RenderScript
-import android.renderscript.ScriptIntrinsicBlur
 import android.text.TextUtils
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.Toast
+import java.math.BigDecimal
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
@@ -183,10 +179,45 @@ fun isServiceRunning(mContext: Context, className: String?): Boolean {
     return isRunning
 }
 
-
-private fun formatTime(length: Long): String {
+/**
+ * 将时间戳转换成 分:秒
+ */
+fun formatTime(length: Long): String {
     val date = Date(length)
     //时间格式化工具
     val sdf = SimpleDateFormat("mm:ss")
     return sdf.format(date)
+}
+
+
+/**
+ * 将时间戳转换成 年/月/日
+ */
+fun formatTimeYear(length: Long): String {
+    val date = Date(length)
+    //时间格式化工具
+    val sdf = SimpleDateFormat("yyyy-MM-dd")
+    return sdf.format(date)
+}
+
+
+/**
+ * 元转万 / 亿元且保留两位小数并四舍五入
+ */
+fun getNumberWanTwo(value: String): String {
+    val formater = DecimalFormat("1")
+    val bigDecimal = BigDecimal(value)
+    var decimal = BigDecimal("10000")
+    formater.roundingMode = RoundingMode.HALF_UP
+
+    if (value.length in 5..8) {
+        decimal = bigDecimal.divide(BigDecimal("10000"))
+        return "${formater.format(decimal)}万"
+    } else if (value.length >= 9) {
+        decimal = bigDecimal.divide(BigDecimal("100000000"))
+        return "${formater.format(decimal)}亿"
+    } else {
+        decimal = bigDecimal.divide(BigDecimal("1"))
+        return formater.format(decimal)
+    }
 }

@@ -6,8 +6,10 @@
     <color name="teal_200">#1f71af</color>
     <color name="teal_700">#1f71af</color>
     <color name="black">#FF000000</color>
+    <color name="black_alpha_8a">#8A000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_8a">#8AFFFFFF</color>
+    <color name="white_9a">#9AFFFFFF</color>
     <color name="white_5a">#5AFFFFFF</color>
     <color name="white_1a">#1AFFFFFF</color>
     <color name="white_0a">#0AFFFFFF</color>
@@ -23,4 +25,6 @@
     <color name="blue_2a">#2A1f71af</color>
     <color name="blue_9a">#9A1f71af</color>
     <color name="black_alpha_a2">#2A000000</color>
+    <color name="black_alpha_a1">#1A000000</color>
+    <color name="play_count_back">#1AF5F8F5</color>
 </resources>

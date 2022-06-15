@@ -1,5 +1,6 @@
 package com.example.wonder.utils
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -26,6 +27,16 @@ object BindingAdapter {
                     BlurTransformation(100, 1)
                 )
             ).into(imageView)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("isVisibility")
+    fun isVisibility(view: View, flag: Boolean) {
+        if (flag) {
+            view.visibility = View.GONE
+        }else{
+            view.visibility = View.VISIBLE
         }
     }
 

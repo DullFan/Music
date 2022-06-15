@@ -1,14 +1,285 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="60dp"
-    tools:context=".ui.fragment.CommunityFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:paddingTop="59dp"
+        android:paddingBottom="60dp"
+        android:layout_height="match_parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/community_card_layout3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            app:cardBackgroundColor="@color/grey_login"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/community_listen_to_the_song"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_search_24" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/grey_login"
+                    android:hint="搜索你想听的歌曲"
+                    android:textSize="@dimen/padding_15dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/community_listen_to_the_song"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/listen_to_the_song"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/community_card_layout3"
+            app:layout_constraintBottom_toBottomOf="@+id/community_card_layout3"
+            app:tint="@color/black_alpha_8a" />
+
+        <androidx.core.widget.NestedScrollView
+            app:layout_constraintTop_toBottomOf="@+id/community_card_layout3"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.fragment.CommunityFragment">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/community_card_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:layout_goneMarginTop="15dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/community_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/community_card_layout2"
+                    android:layout_width="0dp"
+                    android:layout_height="115dp"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/home_recommend_layout"
+                    app:layout_constraintHorizontal_bias="0.526"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/community_card_layout">
+
+
+                    <TextView
+                        android:id="@+id/community_today_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="今日推荐"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/community_today_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="2022-6-12"
+                        android:textColor="@color/white_8a"
+                        android:textSize="13dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/community_today_text"
+                        app:layout_constraintLeft_toRightOf="@+id/community_today_text"
+                        app:layout_constraintTop_toTopOf="@+id/community_today_text" />
+
+
+                    <TextView
+                        android:id="@+id/community_today_music_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white_9a"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/community_today_text"
+                        app:layout_constraintTop_toBottomOf="@+id/community_today_text" />
+
+                    <TextView
+                        android:id="@+id/community_today_music_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white_9a"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/community_today_text"
+                        app:layout_constraintTop_toBottomOf="@+id/community_today_music_01" />
+
+                    <TextView
+                        android:id="@+id/community_today_music_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white_9a"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/community_today_text"
+                        app:layout_constraintTop_toBottomOf="@+id/community_today_music_02" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginRight="5dp"
+                        app:cardBackgroundColor="@color/white_9a"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintBottom_toBottomOf="@id/community_today_music_01"
+                        app:layout_constraintRight_toLeftOf="@id/community_today_music_01"
+                        app:layout_constraintTop_toTopOf="@id/community_today_music_01" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginRight="5dp"
+                        app:cardBackgroundColor="@color/white_9a"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintBottom_toBottomOf="@id/community_today_music_01"
+                        app:layout_constraintRight_toLeftOf="@id/community_today_music_01"
+                        app:layout_constraintTop_toTopOf="@id/community_today_music_01" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginRight="5dp"
+                        app:cardBackgroundColor="@color/white_9a"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintBottom_toBottomOf="@id/community_today_music_02"
+                        app:layout_constraintRight_toLeftOf="@id/community_today_music_02"
+                        app:layout_constraintTop_toTopOf="@id/community_today_music_02" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginRight="5dp"
+                        app:cardBackgroundColor="@color/white_9a"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintBottom_toBottomOf="@id/community_today_music_03"
+                        app:layout_constraintRight_toLeftOf="@id/community_today_music_03"
+                        app:layout_constraintTop_toTopOf="@id/community_today_music_03" />
+
+                    <ImageView
+                        android:id="@+id/community_song_list_play"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="50dp"
+                        android:src="@drawable/lock_screen_play"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/community_my_song_list_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="你的私荐歌单"
+                    android:visibility="gone"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/community_card_layout2" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/community_my_song_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintTop_toBottomOf="@id/community_my_song_list_title" />
+
+                <TextView
+                    android:id="@+id/community_song_list_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="推荐歌单"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/community_my_song_list" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/community_song_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingBottom="60dp"
+                    app:layout_constraintTop_toBottomOf="@id/community_song_list_title" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:id="@+id/community_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="社区" />
+        android:orientation="horizontal" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

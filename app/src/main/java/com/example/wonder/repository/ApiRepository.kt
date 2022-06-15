@@ -49,19 +49,57 @@ class ApiRepository {
     }
 
     suspend fun songUrlRequest(
-        id: Int
+        id: Long
     ) : SongMusicBean {
         return getApiClient().songUrlRequest(id)
     }
 
     suspend fun lyricRequest(
-        id: Int
+        id: Long
     ) : LyricBean {
         return getApiClient().lyricRequest(id)
+    }
+
+    suspend fun homeBannerRequest(
+        type: Int
+    ) : HomeBannerBean {
+        return getApiClient().homeBannerRequest(type)
+    }
+
+    suspend fun recommendedPlayListRequest(
+        limit: Int
+    ) : RecommendedPlayList{
+        return getApiClient().recommendedPlayListRequest(limit)
+    }
+
+
+    suspend fun myPlayListRequest(
+    ) : MyPlaySongListBean{
+        return getApiClient().myPlayListRequest()
+    }
+
+
+    suspend fun myRecommendedPlayListRequest(
+    ) : MyRecommendedPlayListBean{
+        return getApiClient().myRecommendedPlayListRequest()
+    }
+
+    suspend fun playListDetailsRequest(
+        id: Long
+    ) : PlayListDetailsBean{
+        return getApiClient().playListDetailsRequest(id)
+    }
+
+    suspend fun playListSongRequest(
+        id: Long
+    ) : PlayListSongBean{
+        return getApiClient().playListSongRequest(id)
     }
 
     fun getApiClient(): NetEaseCloudApi {
         return APiClient.instance.instanceRetrofit(NetEaseCloudApi::class.java)
     }
+
+
 
 }

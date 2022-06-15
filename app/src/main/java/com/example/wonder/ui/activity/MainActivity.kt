@@ -59,7 +59,9 @@ class MainActivity : BaseActivity() {
         initDataBinding()
         initAnim()
 
+        //初始化播放模式
         LiveDataBus.with(LiveDataBusKey.MUSIC_PLAY_MODE, Int::class.java).value = 0
+        activityMainBinding.mainViewPager2.offscreenPageLimit = 2
     }
 
     /**
@@ -135,6 +137,7 @@ class MainActivity : BaseActivity() {
         activityMainBinding.mainMusicImg.visibility = View.GONE
         activityMainBinding.mainMusicRoundProgress.visibility = View.GONE
         activityMainBinding.mainMusicPlay.visibility = View.VISIBLE
+
         activityMainBinding.mainViewPager2.setCurrentItem(1, false)
 
         //实例化配置项对应的类

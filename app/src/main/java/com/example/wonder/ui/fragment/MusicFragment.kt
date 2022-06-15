@@ -1,6 +1,5 @@
 package com.example.wonder.ui.fragment
 
-import android.opengl.Visibility
 import android.os.*
 import android.view.LayoutInflater
 import android.view.View
@@ -14,21 +13,24 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.dirror.lyricviewx.LyricUtil.formatTime
 import com.dirror.lyricviewx.LyricViewX
-import com.dirror.lyricviewx.OnPlayClickListener
 import com.example.wonder.R
 import com.example.wonder.R.id.design_bottom_sheet
 import com.example.wonder.base.BaseFragment
 import com.example.wonder.base.BaseRecyclerViewAdapter
+import com.example.wonder.base.RecyclerViewViewHolder
 import com.example.wonder.bean.BottomSettingBean
 import com.example.wonder.bean.MusicListBean
 import com.example.wonder.databinding.*
 import com.example.wonder.service.MediaService
 import com.example.wonder.utils.*
+import com.example.wonder.utils.LiveDataBusKey.BASE_ADAPTER
 import com.example.wonder.utils.LiveDataBusKey.MUSIC_LIST
 import com.example.wonder.utils.LiveDataBusKey.MUSIC_URL
+import com.example.wonder.utils.LiveDataBusKey.VIEW_PAGER2
 import com.example.wonder.viewmodel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -127,7 +129,6 @@ class MusicFragment : BaseFragment() {
      * 设置底部弹窗
      */
     private fun initBottomDialog(homeMore: ImageView) {
-        //TODO 缺少对应的点击事件  起来做完 中午前必须搞定。中午要做我的界面；播放界面放一放
 
         val bottomDialogDataBinding: DialogBottomMusicListBinding = DataBindingUtil.inflate(
             LayoutInflater.from(requireContext()),
@@ -248,7 +249,9 @@ class MusicFragment : BaseFragment() {
             LinearLayoutManager(requireContext())
         bottomDialogDataBinding.dialogBottomMusicRv.adapter = bottomDialogRvListAdapter
 
-        val bottomDialog = BottomSheetDialog(requireContext())
+        val bottomDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialog)
+
+
         bottomDialog.setContentView(bottomDialogDataBinding.root)
 
         bottomDialog.delegate.findViewById<FrameLayout>(design_bottom_sheet)
@@ -286,7 +289,10 @@ class MusicFragment : BaseFragment() {
                         it.al.picUrl,
                         it.dt,
                         it.name,
-                        it.ar.joinToString(separator = "、") { item -> item.name })
+                        //TODO 将歌手的名字分开
+                        it.ar.joinToString(separator = "、") { item -> item.name },
+                        it.fee
+                    )
                 )
             }
 
@@ -300,7 +306,6 @@ class MusicFragment : BaseFragment() {
      * 设置适配器
      */
     private fun initAdapter() {
-        viewBinding.musicVp2.offscreenPageLimit = 5
 
         adapter =
             object : BaseRecyclerViewAdapter<MusicListBean>(R.layout.music_rv_item, mutableList) {
@@ -312,7 +317,6 @@ class MusicFragment : BaseFragment() {
 
                     rvDataBinding as MusicRvItemBinding
                     rvDataBinding.data = data
-
                     //当前选中判断
                     if (index == position) {
                         itemDataBinding = rvDataBinding
@@ -320,9 +324,10 @@ class MusicFragment : BaseFragment() {
                             LiveDataBusKey.MUSIC_LIST_POSITION,
                             Int::class.java
                         ).value = position
+
                         LiveDataBus.with(LiveDataBusKey.PIC_URL, String::class.java).value =
                             data.picUrl
-                        LiveDataBus.with(LiveDataBusKey.MUSIC_ID, Int::class.java).value =
+                        LiveDataBus.with(LiveDataBusKey.MUSIC_ID, Long::class.java).value =
                             data.id
 
                         viewModel.songUrlRequest(data.id, requireContext())
@@ -340,7 +345,15 @@ class MusicFragment : BaseFragment() {
                 }
             }
 
+        LiveDataBus.with(BASE_ADAPTER, RecyclerView.Adapter::class.java).value = adapter
+        LiveDataBus.with(VIEW_PAGER2, ViewPager2::class.java).value = viewBinding.musicVp2
         viewBinding.musicVp2.adapter = adapter
+        viewBinding.musicVp2.offscreenPageLimit = 2
+
+        LiveDataBus.with(MUSIC_LIST, ArrayList::class.java).observe(viewLifecycleOwner) {
+            it as ArrayList<MusicListBean>
+            adapter.dataList = it
+        }
     }
 
     private fun initSeekBarListener() {
@@ -372,20 +385,20 @@ class MusicFragment : BaseFragment() {
 
         musicSeekBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
-            var uponNumber:Int = 0
+            var uponNumber: Int = 0
             override fun onProgressChanged(
                 seekBar: SeekBar?,
                 progress: Int,
                 fromUser: Boolean
             ) {
                 uponNumber = progress
-                // TODO 判断前后滑动
+                // TODO 判断前后滑动还未完成
                 //只在滑动时监听
-                if(LiveDataBus.with(
+                if (LiveDataBus.with(
                         LiveDataBusKey.MUSIC_SEEK_BAR,
                         Boolean::class.java
                     ).value == false
-                ){
+                ) {
                     itemDataBinding.musicRvItemLeft.text = formatTime(progress.toLong())
                     itemDataBinding.musicAlbumLyricTime.updateTime(progress.toLong())
                 }

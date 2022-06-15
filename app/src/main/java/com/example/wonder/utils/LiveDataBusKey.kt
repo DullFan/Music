@@ -60,4 +60,24 @@ object LiveDataBusKey {
      */
     val MUSIC_PLAY_MODE = "MUSIC_PLAY_MODE"
 
+    /**
+     * 当前选中的歌单Id
+     */
+    val PLAYLIST_DETAILS = "playlistDetails"
+
+    /**
+     * 存放 Rv适配器
+     */
+    val BASE_ADAPTER = "base_adapter"
+
+    /**
+     * 存放 ViewPager2
+     */
+    val VIEW_PAGER2 = "VIEW_PAGER2"
+
+    /**
+     * 存放 每日30首数据
+     */
+    val RECOMMENDATION = "RECOMMENDATION"
+
 }

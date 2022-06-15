@@ -1,7 +1,6 @@
 package com.example.wonder.viewmodel
 
 import android.content.Context
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,6 +8,7 @@ import com.example.wonder.bean.*
 import com.example.wonder.repository.ApiRepository
 import com.example.wonder.utils.isNet
 import com.example.wonder.utils.isNetCookie
+import com.example.wonder.utils.showLog
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
@@ -18,6 +18,14 @@ class MainViewModel : ViewModel() {
     var songDetailsLiveData = MutableLiveData<SongDetailsBean>()
     var songMusicLiveData = MutableLiveData<SongMusicBean>()
     var lyricLiveData = MutableLiveData<LyricBean>()
+    var homeBannerLiveData = MutableLiveData<HomeBannerBean>()
+    var recommendedPlayListLiveData = MutableLiveData<RecommendedPlayList>()
+    var myRecommendedPlayListLiveData = MutableLiveData<MyRecommendedPlayListBean>()
+    var myPlayListLiveData = MutableLiveData<MyPlaySongListBean>()
+    var playListDetailsLiveData = MutableLiveData<PlayListDetailsBean>()
+    var playListSongLiveData = MutableLiveData<PlayListSongBean>()
+
+
 
     fun likeMusicListRequest(uId: Int, context: Context) {
         isNetCookie(context) {
@@ -33,7 +41,7 @@ class MainViewModel : ViewModel() {
 
 
     fun songDetailsRequest(ids: String, context: Context) {
-        isNetCookie(context) {
+        isNet(context) {
             viewModelScope.launch {
                 try {
                     songDetailsLiveData.value = ApiRepository().songDetailsRequest(ids)
@@ -44,8 +52,8 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun songUrlRequest(id: Int, context: Context) {
-        isNetCookie(context) {
+    fun songUrlRequest(id: Long, context: Context) {
+        isNet(context) {
             viewModelScope.launch {
                 try {
                     songMusicLiveData.value = ApiRepository().songUrlRequest(id)
@@ -56,7 +64,7 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun lyricRequest(id: Int, context: Context) {
+    fun lyricRequest(id: Long, context: Context) {
         isNet(context) {
             viewModelScope.launch {
                 try {
@@ -68,9 +76,81 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun homeBannerRequest(type: Int, context: Context) {
+        isNet(context) {
+            viewModelScope.launch {
+                try {
+                    homeBannerLiveData.value = ApiRepository().homeBannerRequest(type)
+                } catch (e: Exception) {
+
+                }
+            }
+        }
+    }
+
+    fun recommendedPlayListRequest(
+        limit: Int, context: Context
+    ) {
+        isNet(context) {
+            viewModelScope.launch {
+                try {
+                    recommendedPlayListLiveData.value = ApiRepository().recommendedPlayListRequest(limit)
+                } catch (e: Exception) {
+
+                }
+            }
+        }
+    }
 
 
+    fun myRecommendedPlayListRequest(
+        context: Context
+    ) {
+        isNetCookie(context) {
+            viewModelScope.launch {
+                try {
+                    myRecommendedPlayListLiveData.value = ApiRepository().myRecommendedPlayListRequest()
+                } catch (e: Exception) {
+
+                }
+            }
+        }
+    }
 
 
+    fun myPlayListRequest(
+        context: Context
+    ) {
+        isNetCookie(context) {
+            viewModelScope.launch {
+                try {
+                    myPlayListLiveData.value = ApiRepository().myPlayListRequest()
+                } catch (e: Exception) {
+                    "我来了".showLog()
+                }
+            }
+        }
+    }
 
+    fun playListDetailsRequest(
+        id: Long,
+        context: Context
+    ) {
+        isNetCookie(context) {
+            viewModelScope.launch {
+                    playListDetailsLiveData.value = ApiRepository().playListDetailsRequest(id)
+
+            }
+        }
+    }
+
+    fun playListSongRequest(
+        id: Long,
+        context: Context
+    ) {
+            viewModelScope.launch {
+                    playListSongLiveData.value = ApiRepository().playListSongRequest(id)
+
+        }
+    }
 }

@@ -76,16 +76,82 @@ interface NetEaseCloudApi {
      */
     @GET("/song/url")
     suspend fun songUrlRequest(
-        @Query("id")id :Int,
+        @Query("id") id: Long,
         @Query("cookie") cookie: String = KV.decodeString(
             MMKVData.COOKIE,
             ""
         )
-    ):SongMusicBean
+    ): SongMusicBean
 
     /**
      * 获取歌词
      */
     @GET("/lyric")
-    suspend fun lyricRequest(@Query("id")id:Int):LyricBean
+    suspend fun lyricRequest(@Query("id") id: Long): LyricBean
+
+
+    /**
+     * 获取轮播图
+     */
+    @GET("/banner")
+    suspend fun homeBannerRequest(@Query("type") type: Int): HomeBannerBean
+
+
+    /**
+     * 获取推荐歌单
+     */
+    @GET("/personalized")
+    suspend fun recommendedPlayListRequest(@Query("limit") limit: Int): RecommendedPlayList
+
+    /**
+     * 获取每日推荐歌单
+     */
+    @GET("/recommend/resource")
+    suspend fun myRecommendedPlayListRequest(
+        @Query("cookie") cookie: String = KV.decodeString(
+            MMKVData.COOKIE,
+            ""
+        )
+    ): MyRecommendedPlayListBean
+
+    /**
+     * 获取每日推荐歌曲
+     */
+    @GET("/recommend/songs")
+    suspend fun myPlayListRequest(
+        @Query("cookie") cookie: String = KV.decodeString(
+            MMKVData.COOKIE,
+            ""
+        )
+    ): MyPlaySongListBean
+
+    /**
+     * 获取歌单详情
+     */
+    @GET("/playlist/detail")
+    suspend fun playListDetailsRequest(
+        @Query("id") id:Long,
+        @Query("s") s:Int = 1,
+        @Query("cookie") cookie: String = KV.decodeString(
+            MMKVData.COOKIE,
+            ""
+        )
+    ): PlayListDetailsBean
+
+
+    /**
+     * 获取歌单所有歌曲
+     */
+    @GET("/playlist/track/all")
+    suspend fun playListSongRequest(
+        @Query("id") id:Long,
+        @Query("limit") limit:Int = 30,
+        @Query("offset") offset:Int = 0,
+        @Query("cookie") cookie: String = KV.decodeString(
+            MMKVData.COOKIE,
+            ""
+        )
+    ): PlayListSongBean
+
+
 }
