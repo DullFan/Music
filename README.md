@@ -5,7 +5,7 @@
 后端是这位大佬的: https://github.com/Binaryify/NeteaseCloudMusicApi
 
 ## UI
-![image](img/img1.jpg)
+![image width="200" height="200"](img/img1.jpg)
 ![image](img/img2.jpg)
 ![image](img/img3.jpg)
 ![image](img/img4.jpg)
