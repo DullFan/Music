@@ -2,7 +2,6 @@ package com.example.wonder.entity
 
 import android.util.Log
 import com.example.wonder.bean.ErrorBean
-import com.example.wonder.utils.NET_Ease_CLOUND_URL
 import com.example.wonder.utils.PassingOnData
 import com.example.wonder.utils.showLog
 import com.google.gson.Gson
@@ -14,6 +13,7 @@ import okhttp3.*
 import okhttp3.Interceptor
 import java.lang.String
 
+const val NET_EASE_CLOUND_URL = "http://42.193.118.40:3000"
 
 class APiClient {
 
@@ -32,7 +32,7 @@ class APiClient {
             //添加写出超时时间
             writeTimeout(10000, TimeUnit.SECONDS)
         }.build()
-        var retrofit = Retrofit.Builder().baseUrl(NET_Ease_CLOUND_URL).client(mOkHttpClient)
+        var retrofit = Retrofit.Builder().baseUrl(NET_EASE_CLOUND_URL).client(mOkHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         return retrofit.create(apiInterface)

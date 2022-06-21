@@ -19,7 +19,6 @@ import java.util.*
 import java.util.regex.Pattern
 
 
-const val NET_Ease_CLOUND_URL = "http://42.193.118.40:3000"
 
 
 private var toast: Toast? = null
