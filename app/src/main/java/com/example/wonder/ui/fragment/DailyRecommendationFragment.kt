@@ -41,9 +41,11 @@ class DailyRecommendationFragment : BaseFragment() {
             ViewModelProvider.NewInstanceFactory()
         )[MainViewModel::class.java]
     }
+
     val mutableList: ArrayList<MusicListBean> by lazy {
         LiveDataBus.with(RECOMMENDATION, ArrayList::class.java).value as ArrayList<MusicListBean>
     }
+
     lateinit var rvAdapter: BaseRecyclerViewAdapter<MusicListBean>
     var adapterClickFlag = false
 
@@ -53,14 +55,22 @@ class DailyRecommendationFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewDataBinding = FragmentDailyRecommendationBinding.inflate(layoutInflater)
+        val modeId = LiveDataBus.with(LiveDataBusKey.RECOMMENDATION_ID, Int::class.java).value
+
         viewDataBinding.root.layoutParams =
             ViewGroup.LayoutParams(
                 requireActivity().resources.displayMetrics.widthPixels,
                 requireActivity().resources.displayMetrics.heightPixels
             )
 
-        viewDataBinding.playlistDetailsDetails.text =
-            "甄选私人好品味: 今日份的${mutableList[0].songTitle}、${mutableList[1].songTitle}、${mutableList[2].songTitle}等歌曲一定值得你的期待"
+        if (modeId == 0) {
+            viewDataBinding.recommendedPlaylistItemName.text = "每日推荐"
+            viewDataBinding.playlistDetailsDetails.text =
+                "甄选私人好品味: 今日份的${mutableList[0].songTitle}、${mutableList[1].songTitle}、${mutableList[2].songTitle}等歌曲一定值得你的期待"
+        } else if (modeId == 1) {
+            viewDataBinding.recommendedPlaylistItemName.text = "我喜欢的音乐"
+        }
+
         Glide.with(this).load(mutableList[0].picUrl)
             .into(viewDataBinding.recommendedPlaylistItemImg)
         Glide.with(this).load(mutableList[0].picUrl).apply(

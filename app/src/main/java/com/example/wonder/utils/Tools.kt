@@ -2,6 +2,7 @@ package com.example.wonder.utils
 
 import android.app.ActivityManager
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.net.ConnectivityManager
 import android.text.TextUtils
@@ -9,6 +10,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.Toast
+import com.example.wonder.ui.activity.login.LoginActivity
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -137,7 +139,7 @@ fun isCookie(context: Context, launch: () -> Unit) {
     if (KV.decodeInt(MMKVData.U_ID) != 0) {
         launch.invoke()
     } else {
-//        context.startActivity(Intent(context, LoginActivity::class.java))
+        context.startActivity(Intent(context, LoginActivity::class.java))
         "当前还未登录哦!!!".showToast(context)
     }
 }
@@ -151,7 +153,9 @@ fun isNetCookie(context: Context, launch: () -> Unit) {
         if (KV.decodeInt(MMKVData.U_ID) != 0) {
             launch.invoke()
         } else {
+            context.startActivity(Intent(context, LoginActivity::class.java))
             "当前还未登录哦!!!".showToast(context)
+
         }
     } else {
         "当前无网络".showToast(context)

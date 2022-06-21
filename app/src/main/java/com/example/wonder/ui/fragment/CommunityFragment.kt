@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ import com.example.wonder.databinding.RecommendedPlaylistItemBinding
 import com.example.wonder.utils.*
 import com.example.wonder.utils.LiveDataBusKey.PLAYLIST_DETAILS
 import com.example.wonder.utils.LiveDataBusKey.RECOMMENDATION
+import com.example.wonder.utils.LiveDataBusKey.RECOMMENDATION_ID
 import com.example.wonder.viewmodel.MainViewModel
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
@@ -27,12 +29,8 @@ import com.youth.banner.indicator.RectangleIndicator
 
 class CommunityFragment : BaseFragment() {
     lateinit var viewDataBinding: FragmentCommunityBinding
-    val viewModel: MainViewModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[MainViewModel::class.java]
-    }
+
+    val viewModel: MainViewModel by viewModels()
 
     lateinit var dailySongs: List<MyPlaySongListDailySong>
 
@@ -113,7 +111,8 @@ class CommunityFragment : BaseFragment() {
                     )
                 }
 
-                LiveDataBus.with(RECOMMENDATION,ArrayList::class.java).value = mutableList
+                LiveDataBus.with(RECOMMENDATION, ArrayList::class.java).value = mutableList
+                LiveDataBus.with(RECOMMENDATION_ID, Int::class.java).value = 0
                 requireActivity().supportFragmentManager
                     .beginTransaction()
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -169,7 +168,7 @@ class CommunityFragment : BaseFragment() {
      * 获取推荐歌单
      */
     private fun initRecommendedPlaylist() {
-        viewModel.recommendedPlayListRequest(60, requireContext())
+        viewModel.recommendedPlayListRequest(30, requireContext())
         viewModel.recommendedPlayListLiveData.observe(viewLifecycleOwner) {
             viewDataBinding.communitySongList.apply {
                 layoutManager = GridLayoutManager(requireContext(), 3)

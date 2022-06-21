@@ -451,14 +451,17 @@ class MusicFragment : BaseFragment() {
      */
     private fun initListener() {
         viewModel.lyricLiveData.observe(viewLifecycleOwner) {
-            musicAlbumLyric.apply {
-                loadLyric(it.lrc.lyric)
+            if (::musicAlbumLyric.isInitialized) {
 
-                setNormalTextSize(50f)
-                setNormalColor(resources.getColor(R.color.white_8a))
-                setCurrentTextSize(70f)
-                setLabel("暂无歌词")
-                visibility = View.VISIBLE
+                musicAlbumLyric.apply {
+                    loadLyric(it.lrc.lyric)
+
+                    setNormalTextSize(50f)
+                    setNormalColor(resources.getColor(R.color.white_8a))
+                    setCurrentTextSize(70f)
+                    setLabel("暂无歌词")
+                    visibility = View.VISIBLE
+                }
             }
 
             if (::itemDataBinding.isInitialized) {

@@ -3,6 +3,9 @@ package com.example.wonder.repository
 import com.example.wonder.api.NetEaseCloudApi
 import com.example.wonder.bean.*
 import com.example.wonder.entity.APiClient
+import com.example.wonder.utils.KV
+import com.example.wonder.utils.MMKVData
+import retrofit2.http.GET
 import retrofit2.http.Query
 
 class ApiRepository {
@@ -32,74 +35,82 @@ class ApiRepository {
         phone: String,
         password: String,
         nickname: String
-    ) : RegisterBean {
-        return getApiClient().registerRequest(captcha,phone,password,nickname)
+    ): RegisterBean {
+        return getApiClient().registerRequest(captcha, phone, password, nickname)
     }
 
     suspend fun likeMusicListRequest(
         uId: Int
-    ) : LikeMusicListBean {
+    ): LikeMusicListBean {
         return getApiClient().likeMusicListRequest(uId)
     }
 
     suspend fun songDetailsRequest(
         ids: String
-    ) : SongDetailsBean {
+    ): SongDetailsBean {
         return getApiClient().songDetailsRequest(ids)
     }
 
     suspend fun songUrlRequest(
         id: Long
-    ) : SongMusicBean {
+    ): SongMusicBean {
         return getApiClient().songUrlRequest(id)
     }
 
     suspend fun lyricRequest(
         id: Long
-    ) : LyricBean {
+    ): LyricBean {
         return getApiClient().lyricRequest(id)
     }
 
     suspend fun homeBannerRequest(
         type: Int
-    ) : HomeBannerBean {
+    ): HomeBannerBean {
         return getApiClient().homeBannerRequest(type)
     }
 
     suspend fun recommendedPlayListRequest(
         limit: Int
-    ) : RecommendedPlayList{
+    ): RecommendedPlayList {
         return getApiClient().recommendedPlayListRequest(limit)
     }
 
 
     suspend fun myPlayListRequest(
-    ) : MyPlaySongListBean{
+    ): MyPlaySongListBean {
         return getApiClient().myPlayListRequest()
     }
 
 
     suspend fun myRecommendedPlayListRequest(
-    ) : MyRecommendedPlayListBean{
+    ): MyRecommendedPlayListBean {
         return getApiClient().myRecommendedPlayListRequest()
     }
 
     suspend fun playListDetailsRequest(
         id: Long
-    ) : PlayListDetailsBean{
+    ): PlayListDetailsBean {
         return getApiClient().playListDetailsRequest(id)
     }
 
     suspend fun playListSongRequest(
         id: Long
-    ) : PlayListSongBean{
+    ): PlayListSongBean {
         return getApiClient().playListSongRequest(id)
+    }
+
+    suspend fun userRequest(): UserBean {
+        return getApiClient().userRequest()
+    }
+
+    suspend fun userSongListRequest(
+    ): UserSongListBean {
+        return getApiClient().userSongListRequest()
     }
 
     fun getApiClient(): NetEaseCloudApi {
         return APiClient.instance.instanceRetrofit(NetEaseCloudApi::class.java)
     }
-
 
 
 }

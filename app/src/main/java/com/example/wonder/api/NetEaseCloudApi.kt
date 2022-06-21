@@ -153,5 +153,29 @@ interface NetEaseCloudApi {
         )
     ): PlayListSongBean
 
+    /**
+     * 获取用户详情
+     */
+    @GET("/user/detail")
+    suspend fun userRequest(
+        @Query("uid") uid: Int = KV.decodeInt(
+            MMKVData.U_ID
+        )
+    ): UserBean
+
+    /**
+     * 获取用户歌单
+     */
+    @GET("/user/playlist")
+    suspend fun userSongListRequest(
+        @Query("uid") uid: Int = KV.decodeInt(
+            MMKVData.U_ID
+        ),
+        @Query("cookie") cookie: String = KV.decodeString(
+            MMKVData.COOKIE,
+            ""
+        )
+    ): UserSongListBean
+
 
 }

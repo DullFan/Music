@@ -80,4 +80,11 @@ object LiveDataBusKey {
      */
     val RECOMMENDATION = "RECOMMENDATION"
 
+    /**
+     *  判断进入的是每日30首还是我喜欢的音乐
+     *  0：每日30首
+     *  1：我喜欢的音乐
+     */
+    val RECOMMENDATION_ID = "RECOMMENDATION_ID"
+
 }

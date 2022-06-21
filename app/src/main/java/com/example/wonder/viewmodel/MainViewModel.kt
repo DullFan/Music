@@ -24,7 +24,8 @@ class MainViewModel : ViewModel() {
     var myPlayListLiveData = MutableLiveData<MyPlaySongListBean>()
     var playListDetailsLiveData = MutableLiveData<PlayListDetailsBean>()
     var playListSongLiveData = MutableLiveData<PlayListSongBean>()
-
+    var userLiveData = MutableLiveData<UserBean>()
+    var userSongListLiveData = MutableLiveData<UserSongListBean>()
 
 
     fun likeMusicListRequest(uId: Int, context: Context) {
@@ -94,7 +95,8 @@ class MainViewModel : ViewModel() {
         isNet(context) {
             viewModelScope.launch {
                 try {
-                    recommendedPlayListLiveData.value = ApiRepository().recommendedPlayListRequest(limit)
+                    recommendedPlayListLiveData.value =
+                        ApiRepository().recommendedPlayListRequest(limit)
                 } catch (e: Exception) {
 
                 }
@@ -109,7 +111,8 @@ class MainViewModel : ViewModel() {
         isNetCookie(context) {
             viewModelScope.launch {
                 try {
-                    myRecommendedPlayListLiveData.value = ApiRepository().myRecommendedPlayListRequest()
+                    myRecommendedPlayListLiveData.value =
+                        ApiRepository().myRecommendedPlayListRequest()
                 } catch (e: Exception) {
 
                 }
@@ -138,7 +141,7 @@ class MainViewModel : ViewModel() {
     ) {
         isNetCookie(context) {
             viewModelScope.launch {
-                    playListDetailsLiveData.value = ApiRepository().playListDetailsRequest(id)
+                playListDetailsLiveData.value = ApiRepository().playListDetailsRequest(id)
 
             }
         }
@@ -148,9 +151,36 @@ class MainViewModel : ViewModel() {
         id: Long,
         context: Context
     ) {
+        isNetCookie(context) {
             viewModelScope.launch {
-                    playListSongLiveData.value = ApiRepository().playListSongRequest(id)
+                playListSongLiveData.value = ApiRepository().playListSongRequest(id)
 
+            }
         }
+
+    }
+
+
+    fun userRequest(
+        context: Context
+    ) {
+        isNetCookie(context) {
+            viewModelScope.launch {
+                userLiveData.value = ApiRepository().userRequest()
+
+            }
+        }
+
+    }
+    fun userSongListRequest(
+        context: Context
+    ) {
+        isNetCookie(context) {
+            viewModelScope.launch {
+                userSongListLiveData.value = ApiRepository().userSongListRequest()
+
+            }
+        }
+
     }
 }

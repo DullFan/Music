@@ -25,6 +25,7 @@
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/music_rv_item_time.xml" value="0.151" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/music_rv_item_time2.xml" value="0.151" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/music_rv_item_time_left.xml" value="0.151" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/my_vip_back.xml" value="0.1" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/shape_sheet_dialog_bg.xml" value="0.131" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/top_left_rounded_15dp.xml" value="0.24739583333333334" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/drawable/top_right_rounded_10dp.xml" value="0.24739583333333334" />
@@ -44,10 +45,12 @@
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_home.xml" value="0.24166666666666667" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_music.xml" value="0.12121212121212122" />
-        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_my.xml" value="0.213768115942029" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_my.xml" value="0.2231638418079096" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_playlist_details.xml" value="0.24094202898550723" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/fragment_setting.xml" value="0.23641304347826086" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/item_dialog_bottom_item1.xml" value="0.24048913043478262" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/item_dialog_bottom_item2.xml" value="0.24835988753514526" />
+        <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/item_my_rv_song_list.xml" value="0.26671732522796354" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/item_rv_play_list.xml" value="0.20425724637681159" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/music_rv_item.xml" value="0.32947232947232946" />
         <entry key="..\:/AStudyData/AndroidStudioProjects/Music/app/src/main/res/layout/recommended_playlist_item.xml" value="0.6" />

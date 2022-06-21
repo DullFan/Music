@@ -23,8 +23,22 @@
 
     <color name="blue">#1f71af</color>
     <color name="blue_2a">#2A1f71af</color>
+    <color name="blue_1a">#1A1f71af</color>
     <color name="blue_9a">#9A1f71af</color>
     <color name="black_alpha_a2">#2A000000</color>
     <color name="black_alpha_a1">#1A000000</color>
     <color name="play_count_back">#1AF5F8F5</color>
+
+
+    <color name="my_like_color">#2Af7a3d9</color>
+    <color name="my_recent_color">#2ACBF8BC</color>
+    <color name="my_local_color">#2Ab9e1ff</color>
+
+    <color name="my_like_color_select">#f7a3d9</color>
+    <color name="my_recent_color_select">#CBF8BC</color>
+    <color name="my_local_color_select">#b9e1ff</color>
+
+    <color name="my_like_color_select_text">#9Af7a3d9</color>
+    <color name="my_recent_color_select_text">#9ACBF8BC</color>
+    <color name="my_local_color_select_text">#9Ab9e1ff</color>
 </resources>
