@@ -1,10 +1,16 @@
 ## 简介
 
 使用网易云音乐API + 波点音乐UI实现的音乐项目。
+
 后端是这位大佬的: https://github.com/Binaryify/NeteaseCloudMusicApi
 
 ## UI
-![image](xxx.png)
+![image](img/img1.jpg)
+![image](img/img2.jpg)
+![image](img/img3.jpg)
+![image](img/img4.jpg)
+![image](img/img5.jpg)
+![image](img/img6.jpg)
 
 ## 特点
 * 使用MVVM架构模式

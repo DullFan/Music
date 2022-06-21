@@ -92,6 +92,15 @@ class MyFragment : BaseFragment() {
             }
         }
 
+
+        viewDataBinding.mySetting.setOnClickListener {
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .replace(R.id.my_community_container, SettingFragment(), null)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     private fun initLikeMusicList() {

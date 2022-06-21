@@ -10,10 +10,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingTop="70dp"
         tools:context=".ui.fragment.SettingFragment">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/setting_"
+            android:id="@+id/setting_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
