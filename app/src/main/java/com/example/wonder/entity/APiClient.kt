@@ -66,7 +66,7 @@ class LoggingInterceptor : Interceptor {
         )
 
         //TODO 获取网络请求信息
-//        format.showLog()
+        format.showLog()
 
         if(request.url.toString().contains("recommend/songs?cookie")){
             format.showLog()

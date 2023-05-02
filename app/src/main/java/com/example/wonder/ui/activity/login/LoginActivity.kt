@@ -1,7 +1,7 @@
 package com.example.wonder.ui.activity.login
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.example.wonder.base.BaseActivity
 import com.example.wonder.databinding.ActivityLoginBinding
 import com.example.wonder.ui.activity.MainActivity
@@ -9,17 +9,13 @@ import com.example.wonder.utils.*
 import com.example.wonder.viewmodel.LoginViewModel
 
 class LoginActivity : BaseActivity() {
-    private val loginBinding by lazy {
+    val loginBinding by lazy {
         ActivityLoginBinding.inflate(layoutInflater)
     }
 
 
-    private val viewModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(LoginViewModel::class.java)
-    }
+    val viewModel :LoginViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

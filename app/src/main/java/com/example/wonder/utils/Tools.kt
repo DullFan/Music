@@ -20,7 +20,6 @@ import java.util.regex.Pattern
 
 
 
-
 private var toast: Toast? = null
 
 /**

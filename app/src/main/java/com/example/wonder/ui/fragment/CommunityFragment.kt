@@ -8,7 +8,6 @@ import android.widget.ImageView
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide

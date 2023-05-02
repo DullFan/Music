@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -112,7 +113,7 @@ public class SkinResources {
      */
     public Object getBackground(int resId) {
         if(resId == 0){
-
+            Log.e("RESTAG", "getBackground: 进来了" );
         }
         String resourceTypeName = mAppResources.getResourceTypeName(resId);
 

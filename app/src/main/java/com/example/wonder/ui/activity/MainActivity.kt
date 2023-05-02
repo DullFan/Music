@@ -8,12 +8,11 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
-import android.view.KeyEvent
+
 import android.view.View
 import android.view.animation.LinearInterpolator
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.wonder.R
@@ -26,7 +25,6 @@ import com.example.wonder.ui.fragment.MusicFragment
 import com.example.wonder.ui.fragment.MyFragment
 import com.example.wonder.utils.*
 import com.example.wonder.viewmodel.MainViewModel
-import kotlin.math.log
 
 
 class MainActivity : BaseActivity() {
@@ -39,12 +37,7 @@ class MainActivity : BaseActivity() {
         )
     }
 
-    private val viewModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(MainViewModel::class.java)
-    }
+    private val viewModel:MainViewModel by viewModels()
 
     /**
      * 判定服务

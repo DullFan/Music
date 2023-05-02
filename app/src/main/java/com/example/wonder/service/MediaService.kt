@@ -34,7 +34,6 @@ class MediaService : Service() {
          */
         @Synchronized
         fun playMusic() {
-            //如果还没开始播放，就播放
             if (!mMediaPlayer.isPlaying) {
                 LiveDataBus.with(MUSIC_IS_FLAG, Boolean::class.java).value = true
                 mMediaPlayer.start()
@@ -46,7 +45,6 @@ class MediaService : Service() {
          */
         @Synchronized
         fun pauseMusic() {
-            //暂停播放
             if (mMediaPlayer.isPlaying) {
                 LiveDataBus.with(MUSIC_IS_FLAG, Boolean::class.java).value = false
                 mMediaPlayer.pause()
